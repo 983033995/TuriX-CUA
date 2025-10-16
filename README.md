@@ -25,7 +25,7 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ## Table of Contents
 - [📞 Contact & Community](#-contact--community)
-- [📰 Latest News](#📰-latest-news)
+- [📰 Latest News](#latest-news)
 - [🖼️ Demos](#️-demos)
 - [✨ Key Features](#-key-features)
 - [📊 Model Performance](#-model-performance)
@@ -43,11 +43,14 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ## 📰 Latest News
 
-**October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
-
 **September 30, 2025** - 🎉 Exciting update! We've just released our latest AI model on the [TuriX API platform](https://turixapi.io), bringing enhanced performance, smarter reasoning, and seamless integration for even more powerful desktop automation. Developers and researchers, this is your cue—head over to the platform to access it now and elevate your workflows!
 
+**October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
+
+Ready to level up? Update your `config.json` with `"model": "qwen3-vl"` and start automating—happy hacking! 🎉
+
 *Stay tuned to our [Discord](https://discord.gg/BRxXtnGg) for tips, user stories, and the next big drop.*
+
 ---
 
 ## 🖼️ Demos
