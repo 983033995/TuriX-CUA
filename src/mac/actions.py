@@ -188,6 +188,8 @@ async def _scroll_invisible_at_position(x, y, lines):
     (positive=up, negative=down), then warp back. 
     This avoids permanently moving the user's pointer.
     """
+    x = x/1000.0
+    y = y/1000.0
     screen_w, screen_h = _get_screen_size()
     x *= screen_w
     y *= screen_h
@@ -202,8 +204,8 @@ async def _scroll_invisible_at_position(x, y, lines):
 async def left_click_pixel(position) -> bool:
     """Left-click the specified (x, y) in normalized screen coords, invisibly."""
     screen_w, screen_h = _get_screen_size()
-    abs_x = position[0] * screen_w
-    abs_y = position[1] * screen_h
+    abs_x = position[0]/1000 * screen_w
+    abs_y = position[1]/1000 * screen_h
 
     await _click_invisible(abs_x, abs_y, button='left')
     logger.debug(f'✅ Successfully left-clicked pixel at absolute [{abs_x}, {abs_y}]')
@@ -212,8 +214,8 @@ async def left_click_pixel(position) -> bool:
 async def right_click_pixel(position) -> bool:
     """Right-click the specified (x, y) in normalized screen coords, invisibly."""
     screen_w, screen_h = _get_screen_size()
-    abs_x = position[0] * screen_w
-    abs_y = position[1] * screen_h
+    abs_x = position[0]/1000 * screen_w
+    abs_y = position[1]/1000 * screen_h
 
     await _click_invisible(abs_x, abs_y, button='right')
     logger.debug(f'✅ Successfully right-clicked pixel at absolute [{abs_x}, {abs_y}]')
@@ -227,8 +229,8 @@ async def move_to(position) -> bool:
     post mouse events at the target coords directly.
     """
     screen_w, screen_h = _get_screen_size()
-    abs_x = position[0] * screen_w
-    abs_y = position[1] * screen_h
+    abs_x = position[0]/1000 * screen_w
+    abs_y = position[1]/1000 * screen_h
 
     # _warp_cursor((abs_x, abs_y))
     move = Quartz.CGEventCreateMouseEvent(None,
@@ -245,10 +247,10 @@ async def drag_pixel(start, end) -> bool:
     This uses left-mouse drag invisibly, restoring cursor after the operation.
     """
     screen_w, screen_h = _get_screen_size()
-    x1 = start[0] * screen_w
-    y1 = start[1] * screen_h
-    x2 = end[0] * screen_w
-    y2 = end[1] * screen_h
+    x1 = start[0]/1000 * screen_w
+    y1 = start[1]/1000 * screen_h
+    x2 = end[0]/1000 * screen_w
+    y2 = end[1]/1000 * screen_h
 
     await _drag_invisible(x1, y1, x2, y2, button='left')
     logger.debug(f'✅ Successfully dragged from [{x1}, {y1}] to [{x2}, {y2}]')
