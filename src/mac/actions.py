@@ -155,20 +155,15 @@ async def _drag_invisible(x1, y1, x2, y2, duration=0.5, steps=60, button='left')
     CGEventPost(kCGHIDEventTap, up)
 
 async def _scroll_invisible(lines=1):
-    """
-    把 N 行拆成 N 条 CGEvent，每条 value=±1。
-    正值向上，负值向下。
-    """
     direction = 1 if lines > 0 else -1
     for _ in range(abs(lines)):
         event = Quartz.CGEventCreateScrollWheelEvent(
             None,
             Quartz.kCGScrollEventUnitLine,
-            1,              # 只滚纵向
-            direction       # ±1 而不是 ±N
+            1, 
+            direction       
         )
         Quartz.CGEventPost(Quartz.kCGSessionEventTap, event)
-        # 3–10 ms 让目标 App 处理，太快可能丢
         await asyncio.sleep(0.003)
         if _==25:
             break
