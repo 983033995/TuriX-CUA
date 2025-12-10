@@ -35,7 +35,6 @@ class MessageManager:
 		include_attributes: list[str] = [],
 		max_error_length: int = 400,
 		max_actions_per_step: int = 5,
-		new_task: bool = False,
 	):
 		self.llm = llm
 		self.system_prompt_class = system_prompt_class
@@ -47,7 +46,6 @@ class MessageManager:
 		self.IMG_TOKENS = image_tokens
 		self.include_attributes = include_attributes
 		self.max_error_length = max_error_length
-		self.new_task = new_task
 
 		# Use the updated SystemPrompt with our explicit JSON instructions.
 		system_message = self.system_prompt_class(
