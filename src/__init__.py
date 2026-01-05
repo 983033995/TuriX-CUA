@@ -9,6 +9,10 @@ from src.agent.views import ActionResult as ActionResult
 from src.agent.views import AgentHistoryList as AgentHistoryList
 from src.controller.service import Controller as Controller
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 __all__ = [
 	'Agent',
 	'Controller',

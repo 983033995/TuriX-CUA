@@ -20,14 +20,22 @@ def time_execution_sync(additional_text: str = '') -> Callable[[Callable[P, R]],
 			logger.debug(f'{additional_text} Execution time: {execution_time:.2f} seconds')
 			return result
 
+<<<<<<< HEAD
 		return wrapper
 
 	return decorator
+=======
+	return wrapper
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 
 def time_execution_async(
 	additional_text: str = '',
+<<<<<<< HEAD
 ) -> Callable[[Callable[P, Coroutine[Any, Any, R]]], Callable[P, Coroutine[Any, Any, R]]]:
+=======
+) -> Callable[[Callable[P, Coroutine[Any, Any, R]], Callable[P, Coroutine[Any, Any, R]]]:
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 	def decorator(func: Callable[P, Coroutine[Any, Any, R]]) -> Callable[P, Coroutine[Any, Any, R]]:
 		@wraps(func)
 		async def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
@@ -36,10 +44,14 @@ def time_execution_async(
 			execution_time = time.time() - start_time
 			logger.debug(f'{additional_text} Execution time: {execution_time:.2f} seconds')
 			return result
+<<<<<<< HEAD
 
 		return wrapper
 
 	return decorator
 
+=======
+	return wrapper
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 

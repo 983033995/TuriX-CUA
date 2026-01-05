@@ -1,4 +1,8 @@
 from __future__ import annotations
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 import asyncio
 import base64
 import io
@@ -7,14 +11,18 @@ import logging
 import os
 import uuid
 from pathlib import Path
+<<<<<<< HEAD
 import Quartz
 from typing import Any, Callable, Dict, List, Optional, Type, TypeVar
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 import re
 from dotenv import load_dotenv
 from langchain_core.language_models.chat_models import BaseChatModel
 from typing import Type
 from collections import OrderedDict
 from langchain_core.language_models.chat_models import BaseChatModel
+<<<<<<< HEAD
 from langchain_openai import ChatOpenAI, AzureChatOpenAI          # OpenAI endpoints
 from langchain_anthropic import ChatAnthropic                     # Claude
 from langchain_google_genai import ChatGoogleGenerativeAI  
@@ -23,6 +31,8 @@ from langchain_core.messages import (
 )
 
 from lmnr import observe
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 from datetime import datetime
 from openai import RateLimitError
 from PIL import Image, ImageDraw, ImageFont
@@ -37,11 +47,17 @@ from src.agent.views import (
     AgentError,
     AgentHistory,
     AgentHistoryList,
+<<<<<<< HEAD
     AgentOutput,
     AgentStepInfo,
     AgentBrain
 )
 from src.agent.planner_service import Planner
+=======
+    AgentStepInfo,
+    AgentBrain
+)
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 from src.controller.registry.views import ActionModel
 from src.controller.service import Controller
 from src.mac.tree import MacUITreeBuilder
@@ -149,7 +165,10 @@ class Agent:
 
         self.save_conversation_path = save_conversation_path
         self.save_conversation_path_encoding = save_conversation_path_encoding
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         self.include_attributes = include_attributes
         self.max_error_length = max_error_length
         self.screenshot_annotated = None
@@ -157,7 +176,10 @@ class Agent:
         self.max_input_tokens = max_input_tokens
         self.save_temp_file_path = os.path.join(os.path.dirname(__file__), 'temp_files')
         self.use_ui = use_ui
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         self.mac_tree_builder = MacUITreeBuilder()
         self.controller = controller
         self.max_actions_per_step = max_actions_per_step
@@ -181,14 +203,20 @@ class Agent:
         self._setup_action_models()
 
         self._set_model_names()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         self.tool_calling_method = self.set_tool_calling_method(tool_calling_method)
         self.initiate_messages()
         self._last_result = None
 
         self.register_new_step_callback = register_new_step_callback
         self.register_done_callback = register_done_callback
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         # Agent run variables
         self.history: AgentHistoryList = AgentHistoryList(history=[])
         self.n_steps = 1
@@ -203,12 +231,18 @@ class Agent:
         self.ask_for_help = False
         if save_conversation_path:
             logger.info(f'Saving conversation to {save_conversation_path}')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         if self.resume and not agent_id:
             raise ValueError("Agent ID is required for resuming a task.")
         self.save_temp_file_path = os.path.join(self.save_temp_file_path, f"{self.agent_id}")
         
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _set_model_names(self) -> None:
         self.chat_model_library = self.llm.__class__.__name__
         if hasattr(self.llm, 'model_name'):
@@ -228,12 +262,18 @@ class Agent:
                 return 'function_calling'
             else:
                 return None
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _setup_action_models(self) -> None:
         """Setup dynamic action models from controller's registry"""
         self.ActionModel = self.controller.registry.create_action_model()
         self.AgentOutput = AgentOutput.type_with_custom_actions(self.ActionModel)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def get_last_pid(self) -> Optional[int]:
         latest_pid = self.last_pid
         if self._last_result:
@@ -241,7 +281,10 @@ class Agent:
                 if r.current_app_pid:
                     latest_pid = r.current_app_pid
         return latest_pid
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def save_memory(self) -> None:
         """
         Save the current memory to a file.
@@ -262,7 +305,10 @@ class Agent:
             if os.path.getsize(file_name) > 0:
                 f.truncate(0)
             f.write(json.dumps(data, ensure_ascii=False, default=lambda o: list(o) if isinstance(o, set) else o) + "\n")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def load_memory(self) -> None:
         """
         Load the current memory from a file.
@@ -281,7 +327,10 @@ class Agent:
                 self.state_memory = data.get("state_memory", None)
                 self.n_steps = data.get("step", 1)
                 logger.info(f"Loaded memory from {file_name}")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     @time_execution_async("--step")
     async def step(self, step_info: Optional[AgentStepInfo] = None) -> None:
         logger.info(f"\n📍 Step {self.n_steps}")
@@ -357,13 +406,22 @@ class Agent:
                     },
                     {
                         "type": "image_url",
+<<<<<<< HEAD
                         "image_url": {"url": screenshot_to_dataurl(screenshot)},
                     }]
+=======
+                        "image_url": {"url": screenshot_to_dataurl(self.screenshot_annotated)},
+                    }
+                ]
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
             self.agent_message_manager._remove_last_AIntool_message()
             self.agent_message_manager._remove_last_state_message()
             self.agent_message_manager.add_state_message(state_content, self._last_result, step_info)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
             input_messages = self.agent_message_manager.get_messages()
             model_output, raw = await self.get_next_action(input_messages)
             
@@ -372,6 +430,7 @@ class Agent:
             if self.register_new_step_callback:
                 self.register_new_step_callback(state, model_output, self.n_steps)
             self._save_agent_conversation(input_messages, model_output,step=self.n_steps)
+<<<<<<< HEAD
 
             self.agent_message_manager._remove_last_state_message()
             self.agent_message_manager.add_model_output(model_output)
@@ -380,6 +439,14 @@ class Agent:
             self.last_step_action = [action.model_dump(exclude_unset=True) for action in model_output.action] if model_output else []
             # join the self.state_memory and the self.last_goal
 
+=======
+            self.agent_message_manager._remove_last_state_message()
+            self.agent_message_manager.add_model_output(model_output)
+            
+            self.last_step_action = [action.model_dump(exclude_unset=True) for action in model_output.action] if model_output else []
+            # join the self.state_memory and the self.last_goal
+            
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
             result = await self.controller.multi_act(
                 model_output.action,
                 self.mac_tree_builder,
@@ -406,27 +473,43 @@ class Agent:
                 self.state_memory[f'Step {self.n_steps} is'] = '(success)'
                 self.goal_action_memory[f'Step {self.n_steps}'] = f'Goal: {self.last_goal}, Actions: {self.last_step_action}'
                 self.goal_action_memory[f'Step {self.n_steps} is'] = f'(success)'
+<<<<<<< HEAD
+=======
+                self.short_memory = f'The important memory: {self.state_memory}. {self.goal_action_memory}'
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
                 if len(self.goal_action_memory) > self.short_memory_len:
                     first_key = next(iter(self.goal_action_memory))
                     del self.goal_action_memory[first_key]
                 self.short_memory = f'The important memory: {self.state_memory}. {self.goal_action_memory}'
+<<<<<<< HEAD
 
         except Exception as e:
             result = await self._handle_step_error(e)
             self._last_result = result
 
+=======
+        except Exception as e:
+            result = await self._handle_step_error(e)
+            self._last_result = result
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         finally:
             if result:
                 self._make_history_item(model_output, state, result)
             if not self.wait_this_step:
                 self.n_steps += 1
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     async def _handle_step_error(self, error: Exception) -> list[ActionResult]:
         include_trace = logger.isEnabledFor(logging.DEBUG)
         error_msg = AgentError.format_error(error, include_trace=include_trace)
         prefix = f'❌ Result failed {self.consecutive_failures + 1}/{self.max_failures} times:\n '
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         if isinstance(error, (ValidationError, ValueError)):
             logger.error(f'{prefix}{error_msg}')
             if 'Max token limit reached' in error_msg:
@@ -435,6 +518,7 @@ class Agent:
                 logger.info(f'Reducing agent max input tokens: {self.agent_message_manager.max_input_tokens}')
                 self.agent_message_manager.cut_messages()
             elif 'Could not parse response' in error_msg:
+<<<<<<< HEAD
                 error_msg += '\n\nReturn a valid JSON object with the required fields.'
             self.consecutive_failures += 1
 
@@ -449,6 +533,12 @@ class Agent:
 
         return [ActionResult(error=error_msg, include_in_memory=True)]
 
+=======
+                error_msg += '\n\n\nReturn a valid JSON object with the required fields.'
+            self.consecutive_failures += 1
+        
+        return [ActionResult(error=error_msg, include_in_memory=True)]
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _make_history_item(
         self,
         model_output: AgentOutput | None,
@@ -461,7 +551,10 @@ class Agent:
             state=state,
         )
         self.history.history.append(history_item)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     @time_execution_async('--get_next_action')
     async def get_next_action(self, input_messages: list[BaseMessage]) -> AgentOutput:
         """
@@ -471,19 +564,29 @@ class Agent:
         response: dict[str, Any] = await self.llm.ainvoke(input_messages)
         logger.debug(f'LLM response: {response}')
         record = str(response.content)
+<<<<<<< HEAD
 
         output_dict = json.loads(record)
 
+=======
+        output_dict = json.loads(record)
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         brain = AgentBrain(evaluation_previous_goal=output_dict['current_state']['evaluation_previous_goal'],
                             information_stored=output_dict['current_state']['information_stored'],
                             next_goal=output_dict['current_state']['next_goal'],
                             )
         parsed: AgentOutput | None = AgentOutput(current_state=brain, action=output_dict['action'])
+<<<<<<< HEAD
 
         self._log_response(parsed)
         return parsed, record
     
 
+=======
+        self._log_response(parsed)
+        return parsed, record
+    
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _log_response(self, response: AgentOutput) -> None:
         if 'Success' in response.current_state.evaluation_previous_goal:
             emoji = '✅'
@@ -496,7 +599,10 @@ class Agent:
         logger.info(f'🎯 Next goal: {response.current_state.next_goal}')
         for i, action in enumerate(response.action):
             logger.info(f'🛠️  Action {i + 1}/{len(response.action)}: {action.model_dump_json(exclude_unset=True)}')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _save_agent_conversation(
         self,
         input_messages: list[BaseMessage],
@@ -512,16 +618,22 @@ class Agent:
             return
         file_name = f"{self.save_conversation_path}_agent_{step}.txt"
         os.makedirs(os.path.dirname(file_name), exist_ok=True) if os.path.dirname(file_name) else None
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         with open(file_name, "w", encoding=self.save_conversation_path_encoding) as f:
             # 1) Write input messages
             self._write_messages_to_file(f, input_messages)
             # 2) Write the final agent "response" (AgentOutput)
             if response is not None:
                 self._write_response_to_file(f, response)
+<<<<<<< HEAD
 
         logger.info(f"Agent conversation saved to: {file_name}")
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _write_messages_to_file(self, f: Any, messages: list[BaseMessage]) -> None:
         """
         For each message, write it out in a human-readable format.
@@ -531,6 +643,7 @@ class Agent:
             f.write(f"\n{message.__class__.__name__}\n{'-'*40}\n")
             if isinstance(message.content, list):
                 for item in message.content:
+<<<<<<< HEAD
                     if isinstance(item, dict):
                         if item.get('type') == 'text':
                             txt = item.get('content') or item.get('text', '')
@@ -558,6 +671,27 @@ class Agent:
     def _log_agent_run(self) -> None:
         logger.info(f'🚀 Starting task: {self.task}')
 
+=======
+                    if isinstance(item, dict) and 'image_url' in item:
+                        if item.get('type') == 'image_url':
+                            f.write(f"[Image URL]\n{item['image_url']['url'][:100]}...\n")
+                    elif 'text' in item:
+                        txt = item.get('text', '')
+                        f.write(f"[Text Content]\n{txt.strip()}\n")
+            else:
+                # If it's a string or something else:
+                f.write(f"{str(message.content)}\n")
+            f.write('\n' + '='*60 + '\n')
+    def _write_response_to_file(self, f: Any, response: Any) -> None:
+        """
+        If the AgentOutput is JSON-like, you can do:
+            #   f.write(json.dumps(json.loads(response.model_dump_json(exclude_unset=True)), indent=2))
+        # Otherwise just string-ify:
+        f.write(str(response) + '\n')
+        f.write('\n' + '='*60 + '\n')
+    def _log_agent_run(self) -> None:
+        logger.info(f'🚀 Starting task: {self.task}')
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     async def run(self, max_steps: int = 100) -> AgentHistoryList:
         try:
             self._log_agent_run()
@@ -571,9 +705,13 @@ class Agent:
                     break
                 if not await self._handle_control_flags():
                     break
+<<<<<<< HEAD
 
                 await self.step()
 
+=======
+                await self.step()
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
                 if self.history.is_done():
                     logger.info('✅ Task completed successfully')
                     if self.register_done_callback:
@@ -582,11 +720,15 @@ class Agent:
                 await asyncio.sleep(2)  # Wait before next step
             else:
                 logger.info('❌ Failed to complete task in maximum steps')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
             return self.history
         except Exception:
             logger.exception('Error running agent')
             raise
+<<<<<<< HEAD
 
     async def edit(self):
         response = await self.planner.edit_task()
@@ -600,6 +742,18 @@ class Agent:
         Build the final task string:
             "The overall plan is: <original task>\n\n<generated plan>"
         and update every MessageManager in one go.
+=======
+    async def edit(self):
+        response = await self.planner.edit_task()
+        self._set_new_task(response)
+    PREFIX = "The overall user's task is: "
+    SUFFIX = "The step by step plan is: "
+    def _set_new_task(self, generated_plan: str) -> None:
+        """
+        Build the final task string:
+            "The overall plan is: <original task>\n<generated plan>
+            and update every MessageManager in one go.
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         """
         if generated_plan.startswith(self.PREFIX):
             final_task = generated_plan
@@ -607,30 +761,46 @@ class Agent:
             final_task = f"{self.PREFIX}{self.original_task}\n{self.SUFFIX}\n{generated_plan}"
         self.task = final_task
         self.initiate_messages()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def _too_many_failures(self) -> bool:
         if self.consecutive_failures >= self.max_failures:
             logger.error(f'❌ Stopping due to {self.max_failures} consecutive failures')
             return True
         return False
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     async def _handle_control_flags(self) -> bool:
         if self._stopped:
             logger.info('Agent stopped')
             return False
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         while self._paused:
             await asyncio.sleep(0.2)
             if self._stopped:
                 return False
+<<<<<<< HEAD
 
         return True
 
+=======
+        return True
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def save_history(self, file_path: Optional[str | Path] = None) -> None:
         if not file_path:
             file_path = 'AgentHistory.json'
         self.history.save_to_file(file_path)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def initiate_messages(self):
         self.agent_message_manager = MessageManager(
             llm=self.llm,

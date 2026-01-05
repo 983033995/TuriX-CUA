@@ -7,15 +7,23 @@ def addLoggingLevel(levelName, levelNum, methodName=None):
 	if not methodName:
 		methodName = levelName.lower()
 
+<<<<<<< HEAD
 	if hasattr(logging, levelName):
 		raise AttributeError('{} already defined in logging module'.format(levelName))
 	if hasattr(logging, methodName):
 		raise AttributeError('{} already defined in logging module'.format(methodName))
+=======
+
+	if hasattr(logging, levelName):
+		raise AttributeError('{} already defined in logging module'.format(levelName))
+
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 	if hasattr(logging.getLoggerClass(), methodName):
 		raise AttributeError('{} already defined in logger class'.format(methodName))
 
 	def logForLevel(self, message, *args, **kwargs):
 		if self.isEnabledFor(levelNum):
+<<<<<<< HEAD
 			self._log(levelNum, message, args, **kwargs)
 
 	def logToRoot(message, *args, **kwargs):
@@ -26,11 +34,27 @@ def addLoggingLevel(levelName, levelNum, methodName=None):
 	setattr(logging.getLoggerClass(), methodName, logForLevel)
 	setattr(logging, methodName, logToRoot)
 
+=======
+			if message:
+				self._log(levelNum, message, *args, **kwargs)
+
+	def isEnabledFor(self, level):
+		return self.level <= level
+
+	def _log(self, level, message, *args, **kwargs):
+		logging.getLoggerClass()(level, message, *args, **kwargs)
+
+logging.addLevelName('RESULT', 35)  # This allows ERROR, FATAL and CRITICAL
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 def setup_logging():
     # Try to add RESULT level, but ignore if it already exists
     try:
+<<<<<<< HEAD
         addLoggingLevel('RESULT', 35)  # This allows ERROR, FATAL and CRITICAL
+=======
+        addLoggingLevel('RESULT', 35)
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     except AttributeError:
         pass  # Level already exists, which is fine
 
@@ -75,7 +99,11 @@ def setup_logging():
     turix_logger = logging.getLogger('turix')
     turix_logger.propagate = False  # Don't propagate to root logger
     turix_logger.addHandler(console)
+<<<<<<< HEAD
     turix_logger.setLevel(root.level)  # Set same level as root logger
+=======
+    turix_logger.setLevel(root.level)  # Set same level as root
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
     logger = logging.getLogger('turix')
     logger.info('TuriX logging setup complete with level %s', log_type)
@@ -96,4 +124,8 @@ def setup_logging():
     ]:
         third_party = logging.getLogger(logger)
         third_party.setLevel(logging.ERROR)
+<<<<<<< HEAD
         third_party.propagate = False
+=======
+        third_party.propagate = False
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163

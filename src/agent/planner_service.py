@@ -16,7 +16,11 @@ class Planner:
                  planner_llm,
                  task: str, 
                  max_input_tokens: int = 32000,
+<<<<<<< HEAD
                  ):
+=======
+                ):
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         self.planner_llm = planner_llm
         self.controller = Controller()
         self.task = task
@@ -48,4 +52,8 @@ class Planner:
         if "REFUSE TO MAKE PLAN" in reply_norm:
             logging.error("Planner refused. Aborting.")
             raise SystemExit(1) 
+<<<<<<< HEAD
         return response.content
+=======
+        return response.content
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163

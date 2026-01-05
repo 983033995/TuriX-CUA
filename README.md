@@ -12,7 +12,11 @@ Join our Discord community for support, discussions, and updates:
 
 <p align="center">
    <a href="https://discord.gg/yaYrNAckb5">
+<<<<<<< HEAD
       <img src="https://img.shields.io/discord/1400749393841492020?color=7289da&label=Join%20our%20Discord&logo=discord&logoColor=white&style=for-the-badge" alt="Join our Discord">
+=======
+       <img src="https://img.shields.io/discord/1400749393841492020?color=7289da&label=Join%20our%20Discord&logo=discord&logoColor=white&style=for-the-badge" alt="Join our Discord">
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
    </a>
 </p>
 
@@ -49,7 +53,11 @@ Prefer your own model? **Change in `config.json` and go.**
 
 **October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
 
+<<<<<<< HEAD
 Ready to level up? Update your `config.json` and start automating—happy hacking! 🎉
+=======
+Ready to level up? Update your `config.json` and start automating—Happy hacking! 🎉
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 *Stay tuned to our [Discord](https://discord.gg/vkEYj4EV2n) for tips, user stories, and the next big drop.*
 
@@ -73,7 +81,11 @@ Ready to level up? Update your `config.json` and start automating—happy hackin
 </p>
 
 <h3 align="center">Windows Demo</h3>
+<<<<<<< HEAD
 <p align="center"><strong>Search video content in youtube and like it</strong></p>
+=======
+<p align="center"><strong>Single click video content in youtube and like it</strong></p>
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 <p align="center">
    <img src="./doc/win_demo1.gif" width="1600" alt="TuriX Windows demo - video search and sharing">
 </p>
@@ -95,6 +107,10 @@ Ready to level up? Update your `config.json` and start automating—happy hackin
 | **MCP‑ready** | Hook up *Claude for Desktop* or **any** agent via the Model Context Protocol (MCP) |
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 ## 📊 Model Performance
 
 Our agent achieves state-of-the-art performance on desktop automation tasks:
@@ -102,7 +118,11 @@ Our agent achieves state-of-the-art performance on desktop automation tasks:
    <img src="./doc/performance_sum.jpg" width="1600" alt="TuriX performance">
 </p>
 
+<<<<<<< HEAD
 For more details, check our [report](https://turix.ai/technical-report/).
+=======
+For more details, check our [technical report](https://turix.ai/technical-report/).
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 ## 🚀 Quick‑Start (macOS 15)
 
@@ -110,10 +130,16 @@ For more details, check our [report](https://turix.ai/technical-report/).
 
 > **0. Windows Users**: Switch to the `windows` branch for Windows-specific setup and installation instructions.
 >
+<<<<<<< HEAD
 > ```bash
 > git checkout windows
 > ```
 
+=======
+> ```\n
+> git checkout windows
+> ```\n
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 
 ### 1. Download the App
 For easier usage, [download the app](https://turix.ai/)
@@ -229,8 +255,16 @@ For bug reports and feature requests, please [open an issue](https://github.com/
 | **2025 Q4** | **✅ Planner** | Understands user intent and makes step-by-step plans to complete tasks |
 | **2025 Q4** | **✅ Multi-Agent Architecture** | Evaluate and guide each step in working |
 | **2025 Q4** | **✅ Duckduckgo Integration** | Speed up the information gathering process, for smarter planning (multi-agent branch) |
+<<<<<<< HEAD
 | **2026 Q1** | **Workflow Automation** | Record, edit, and replay complex multi-step automation sequences |
 | **2026 Q1** | **Offline Model Option** | Fully local inference for maximum privacy and zero API dependency |
 | **2026 Q1** | **Persistent Memory** | Learn user preferences and maintain task history across sessions |
 | **2026 Q2** | **Learning by Demonstration** | Train the agent by showing it your preferred methods and workflows |
 | **2026 Q2** | **Windows-Optimized Model** | Native Windows model architecture for superior performance on Microsoft platforms
+=======
+| **2026 Q1** | Workflow Automation | Record, edit, and replay complex multi-step automation sequences |
+| **2026 Q1** | Offline Model Option | Fully local inference for maximum privacy and zero API dependency |
+| **2026 Q1** | Persistent Memory | Learn user preferences and maintain task history across sessions |
+| **2026 Q2** | Learning by Demonstration | Train the agent by showing it your preferred methods and workflows |
+| **2026 Q2** | Windows-Optimized Model | Native Windows model architecture for superior performance on Microsoft platforms |
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163

@@ -13,8 +13,11 @@ from src.controller.registry.views import ActionModel
 from pydantic.v1 import BaseModel, Field
 from src.controller.views import *
 
+<<<<<<< HEAD
 @dataclass
     
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
 class AgentStepInfo:
     step_number: int
     max_steps: int
@@ -46,7 +49,10 @@ class AgentOutput(BaseModel):
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     action: list[ActionModel] = Field(
         ...,
         min_items=0,
@@ -62,6 +68,10 @@ class AgentOutput(BaseModel):
             __base__=AgentOutput,
             action=(list[custom_actions], Field(...)),  # Properly annotated field with no default
             __module__=AgentOutput.__module__,
+<<<<<<< HEAD
+=======
+            __doc__=AgentOutput.__doc__,
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
         )
 
 
@@ -151,6 +161,7 @@ class AgentHistoryList(BaseModel):
 
     def final_result(self) -> None | str:
         """Final result from history"""
+<<<<<<< HEAD
         if self.history and self.history[-1].result[-1].extracted_content:
             return self.history[-1].result[-1].extracted_content
         return None
@@ -166,6 +177,19 @@ class AgentHistoryList(BaseModel):
         """Check if the agent has any errors"""
         return len(self.errors()) > 0
 
+=======
+        if self.history and len(self.history[-1].result) > 0 and self.history[-1].result[-1].extracted_content:
+            return self.history[-1].result[-1].extracted_content
+        return None
+    def is_done(self) -> bool:
+        """Check if the agent is done"""
+        if self.history and len(self.history[-1].result) > 0 and self.history[-1].result[-1].is_done:
+            return True
+        return False
+    def has_errors(self) -> bool:
+        """Check if the agent has any errors"""
+        return len(self.errors()) > 0
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def action_names(self) -> list[str]:
         """Get all action names from history"""
         action_names = []
@@ -174,6 +198,7 @@ class AgentHistoryList(BaseModel):
             if actions:
                 action_names.append(actions[0])
         return action_names
+<<<<<<< HEAD
 
     def model_thoughts(self) -> list[AgentBrain]:
         """Get all thoughts from history"""
@@ -183,6 +208,14 @@ class AgentHistoryList(BaseModel):
         """Get all model outputs from history"""
         return [h.model_output for h in self.history if h.model_output]
 
+=======
+    def model_thoughts(self) -> list[AgentBrain]:
+        """Get all thoughts from history"""
+        return [h.model_output.current_state for h in self.history if h.model_output]
+    def model_outputs(self) -> list[AgentOutput]:
+        """Get all model outputs from history"""
+        return [h.model_output for h in self.history if h.model_output]
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def model_actions(self) -> list[dict]:
         """Get all actions from history"""
         outputs = []
@@ -192,21 +225,30 @@ class AgentHistoryList(BaseModel):
                     output = action.model_dump(exclude_none=True)
                     outputs.append(output)
         return outputs
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def action_results(self) -> list[ActionResult]:
         """Get all results from history"""
         results = []
         for h in self.history:
             results.extend([r for r in h.result if r])
         return results
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def extracted_content(self) -> list[str]:
         """Get all extracted content from history"""
         content = []
         for h in self.history:
             content.extend([r.extracted_content for r in h.result if r.extracted_content])
         return content
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e26176b90143c5b1e53ef6b06751fd5db11b163
     def model_actions_filtered(self, include: list[str] = []) -> list[dict]:
         """Get all model actions from history as JSON"""
         outputs = self.model_actions()
