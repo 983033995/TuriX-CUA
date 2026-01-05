@@ -4,15 +4,15 @@
   "llm": {
     "provider": "turix",
     "model_name": "turix-model",
-    "api_key": "your_api_key_here",
-    "base_url": "https://llm.turixapi.io/v1" 
+    "api_key": "sk-p0EOiMntjZjwwwztYe3tuRUjPePNAAwbsMmwFdrfKVgxncHJ",
+    "base_url": "https://llm.turixapi.io/v1"
   },
 
   "planner_llm": {
     "provider": "turix",
     "model_name": "turix-planner-model",
-    "api_key": "your_api_key_here",
-    "base_url": "https://llm.turixapi.io/v1" 
+    "api_key": "sk-p0EOiMntjZjwwwztYe3tuRUjPePNAAwbsMmwFdrfKVgxncHJ",
+    "base_url": "https://llm.turixapi.io/v1"
   },
 
   "agent": {
