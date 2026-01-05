@@ -4,7 +4,7 @@
   "llm": {
     "provider": "turix",
     "model_name": "turix-model",
-    "api_key": "sk-p0EOiMntjZjwwwztYe3tuRUjPePNAAwbsMmwFdrfKVgxncHJ",
+    "api_key": "YOUR_API_KEY",
     "base_url": "https://llm.turixapi.io/v1"
   },
 
